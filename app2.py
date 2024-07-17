@@ -9,6 +9,23 @@ from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.ensemble import RandomForestRegressor
 
+#-------------For the Dairy Farm Management System-------------------
+# Common cow breeds:
+
+# - Friesian
+# - Jersey
+# - Holstein
+# - Ayrshire
+# - Guernsey
+
+# Common feed types:
+
+# - Hay
+# - Silage
+# - Alfalfa
+# - Grain
+# - Pasture
+
 # Function to load dataset
 def load_dataset(file_path):
     return pd.read_csv(file_path)
@@ -77,21 +94,22 @@ def main():
     st.title("Dairy Farm Management System")
 
     # Load the dataset
-    file_path = "./data/dataset_1.csv"
+    file_path = "./data/diary-datasets.csv"
     data = load_dataset(file_path)
     print(data.head())
     # Prepare the model
     model = prepare_model(data)
 
     st.header("Enter the following details for your animal:")
+    # animal id is not required for prediction automatically generated
     input_data = {
-        'AnimalID': st.number_input("Animal ID", min_value=1, max_value=100, step=1),
-        'Breed': st.selectbox("Breed", ['BreedA', 'BreedB', 'BreedC']),
+        'AnimalID': np.random.randint(1000, 9999),
+        'Breed': st.selectbox("Breed", ['Friesian', 'Jersey', 'Holstein', 'Ayrshire', 'Guernsey']),
         'Age': st.number_input("Age in years", min_value=1, max_value=20, step=1),
         'Weight': st.number_input("Weight in kg", min_value=100, max_value=1000, step=1),
         'LactationPeriod': st.number_input("Lactation Period in days", min_value=100, max_value=400, step=1),
         'HealthStatus': st.selectbox("Health Status", ['Healthy', 'Sick']),
-        'FeedType': st.selectbox("Feed Type", ['TypeA', 'TypeB', 'TypeC']),
+        'FeedType': st.selectbox("Feed Type", ['Hay', 'Silage', 'Alfalfa', 'Grain', 'Pasture']),
         'FeedAmount': st.number_input("Feed Amount in kg per day", min_value=0.0, max_value=50.0, step=0.1),
         'WaterIntake': st.number_input("Water Intake in liters per day", min_value=0.0, max_value=200.0, step=0.1),
         'Temperature': st.number_input("Temperature in degree Celsius", min_value=-10.0, max_value=50.0, step=0.1),
