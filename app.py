@@ -94,7 +94,7 @@ def main():
     st.title("Dairy Farm Management System")
 
     # Load the dataset
-    file_path = "./data/newdata.csv"
+    file_path = "./data/dataset.csv"
     data = load_dataset(file_path)
     print(data.head())
     # Prepare the model
