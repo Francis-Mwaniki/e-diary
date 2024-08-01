@@ -94,7 +94,7 @@ def main():
     st.title("Dairy Farm Management System")
 
     # Load the dataset
-    file_path = "./data/diary-datasets.csv"
+    file_path = "./data/newdata.csv"
     data = load_dataset(file_path)
     print(data.head())
     # Prepare the model
@@ -127,8 +127,20 @@ def main():
         st.header("Milk Production Prediction")
         st.success(f"""
                     Based on the input data provided, the model predicts the milk production of the animal.
+                    
+                    
+                    
+                    -------------------------------------------------------------------------
+                    Animal ID: {input_data['AnimalID']}
+                    
+                    
                     Predicted Milk Production: {predicted_milk_production:.2f} liters per day
                     if the animal is healthy and all other conditions are optimal.
+                    
+                    Annual Milk Production: {predicted_milk_production * 365:.2f} liters per year
+                   
+                    
+                    -------------------------------------------------------------------------
                    """)
 
         # Provide advice
